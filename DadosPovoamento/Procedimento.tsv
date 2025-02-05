@@ -1,0 +1,11 @@
+Id	Tipo	Notas	Data	CustoAgencia	CustoCliente	Caso
+1	1	Salpicos, projeção do sangue feita sob impulso	2020-12-10	0015.00	0039.99	1
+2	3	Suspeitos ocupados a tentar passar às outras cadeiras	2020-12-19	0085.00	170.00	1
+3	2	O escritório da vítima contém testes todos com classificações negativas	2021-06-13	0100.00	0199.99	2
+4	2	Dez dias depois, todos os testes tinham classificação de 20	2021-06-23	0100.00	0199.99	2
+5	4	Parece que o trabalho de LI3 é fazer uma base de dados para o ministério	2022-04-10	0000.00	0160.99	3
+6	2	Demasiado barulho...	2023-01-14	0100.00	0199.99	4
+7	2	É impossível isto ser regulado pela ASAE...	2023-09-09	0100.00	0199.99	5
+8	5	Isto foi preciso depois de ver a comida	2023-09-10	0600.20	999.00	5
+9	2	Demasiadas meias, os buracos formam um padrão...	2024-02-10	0100.00	0199.99	6
+10	3	O suspeito é regular de um café na rua vermelha	2024-02-15	0100.00	0305.00	6

@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+
+# (C) Agência Veritatis 2024
+# Autor: Humberto Gomes
+#
+# Instale mysql-connector-python antes de executar:
+#   pip3 install mysql-connector-python
+
+import csv
+from getpass import getpass
+import mysql.connector
+from os.path import join
+import sys
+
+def main(argv: list[str]) -> int:
+    if len(argv) != 2:
+        print('Utilização: ./povoamento [diretoria]', file=sys.stderr)
+        return 1
+
+    try:
+        with open(join(argv[1], 'Ordem.txt')) as ficheiro:
+            tabelas = [ linha for linha in ficheiro.read().split('\n') if linha != '' ]
+    except OSError as e:
+        print(e, file=sys.stderr)
+        return 1
+
+    password = getpass(prompt='Password de administrador (root@localhost) do MySQL: ')
+    try:
+        contexto = mysql.connector.connect(user='root',
+                                           password=password,
+                                           host='127.0.0.1',
+                                           database='Veritatis')
+        cursor = contexto.cursor()
+    except mysql.connector.Error as e:
+        print(e, file=sys.stderr)
+        return 1
+
+    for tabela in tabelas:
+        caminho = join(argv[1], tabela + '.tsv')
+        try:
+            ficheiro = open(caminho)
+            leitor = csv.reader(ficheiro, delimiter='\t', quotechar='"', strict=True)
+            for i, tuplo in enumerate(leitor):
+                if i == 0:
+                    atributos = ', '.join(tuplo)
+                    substituições = ', '.join(['%s'] * len(tuplo))
+                    instrução = f'INSERT INTO {tabela}({atributos}) VALUES ({substituições})'
+                else:
+                    print(tabela + str(tuple(tuplo)))
+                    processado = tuple((t if t != 'NULL' else None) for t in tuplo)
+                    cursor.execute(instrução, processado)
+
+            ficheiro.close()
+        except (OSError, csv.Error, mysql.connector.Error) as e:
+            print(e, file=sys.stderr)
+            contexto.rollback()
+            cursor.close()
+            contexto.close()
+            if ficheiro is not None:
+                ficheiro.close()
+            return 1
+
+    contexto.commit()
+    cursor.close()
+    contexto.close()
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))

@@ -1,0 +1,10 @@
+Funcao
+Funcionario
+Exerce
+Cliente
+Emails
+Telefones
+Caso
+TipoProcedimento
+Procedimento
+Provas

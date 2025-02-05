@@ -1,0 +1,9 @@
+Id	Designacao	DataInicio	DataTermino	DataPagamento	CustoAbertura	Cliente	Detetive
+1	Clube da Luta	2020-12-05	2021-05-04	2021-05-10	300.00	1	2
+2	Atrasos Suspeitos	2021-06-12	2021-09-24	2021-10-01	300.00	2	2
+3	Ministros, Coitados	2022-04-01	2022-07-07	2022-08-01	300.00	3	4
+4	O Silêncio Dos Inocentes	2023-01-01	2023-05-16	2023-05-19	350.00	4	2
+5	Vermes na Cantina	2023-09-09	2024-02-29	2024-03-13	400.00	5	4
+6	Meias Rotas	2024-01-01	2024-03-30	NULL	450.00	1	2
+7	Operação Visconde	2024-02-12	NULL	NULL	450.0	6	4
+8	O Barulho Dos Culpados	2024-03-13	NULL	NULL	450.00	3	2
