@@ -1,6 +1,10 @@
 # BD
 
-A relational database for a detective agency.
+A relational database for a detective agency. Project for UMinho's Databases 2023/24 class.
+
+![Conceptual model](Imagens/Concetual.png)
+![Logical model](Imagens/Logico.png)
+![Example query in relational algebra](Imagens/Query.png)
 
 **Grade:** 19 / 20 :star:
 
